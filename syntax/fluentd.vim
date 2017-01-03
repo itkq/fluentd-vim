@@ -9,16 +9,36 @@ endif
 
 syn case ignore
 
+syn keyword FluentdDirectiveKeyword source filter match label store buffer contained nextgroup=FluentdDirectiveCondition skipwhite
+
+syn match FluentdDirectiveBegin +[^<>]\++ contained
+syn match FluentdDirectiveEnd +[^<>]\++ contained
+
 syn match FluentdComment +#.*+
+syn match FluentdString +"[^"]*"+
 
-syn keyword FluentdDirectiveKeyword source filter match label contained nextgroup=FluentdDirectiveCondition skipwhite
-syn match FluentdDirectiveCondition +[^>]*+ contained
+syn match FluentdDirectiveLabel +@[^>]*+ contained
+syn region FluentdPluginBegin matchgroup=fluentdDelimiterBegin start=+<+ end=+>$+ contains=FluentdDirectiveKeyword,FluentdDirectiveLabel,FluentdDirectiveBegin
+syn region FluentdPluginEnd matchgroup=fluentdDelimiterEnd start=+</+ end=+>$+ contains=FluentdDirectiveKeyword,FluentdDirectiveEnd
 
-syn region FluentPluginBegin matchgroup=fluentdDelimiterBegin start=+<+ end=+>$+ contains=FluentdDirectiveKeyword,FluentdDirectiveCondition
-syn region FluentPluginEnd matchgroup=fluentdDelimiterEnd start=+</+ end=+>$+ contains=FluentdDirectiveKeyword
+syn match FluentdTag +^\s\+@\S*+
+syn match FluentdUserTag +@[^>]*+
 
-hi link FluentdDirectiveKeyword   Keyword
+syn match FluentdSymbol +\s\d\++
+syn match FluentdIp +\s\+\d\{1,3}\(\.\d\{1,3}\)\{3}\(:\d\{1,5}\|/\d\{1,2}\)\?+
+
+syn match FluentdEnvironment +\${.*}+
+
+hi link FluentdDirectiveKeyword   Label
 hi link FluentdDelimiterBegin     Function
-hi link FluentdDelimiterEnd       Command
-hi link FluentdDirectiveCondition Type
+hi link FluentdDelimiterEnd       Identifier
+hi link FluentdDirectiveLabel     Function
 hi link FluentdComment            Comment
+hi link FluentdTag                Identifier
+hi link FluentdUserTag            Function
+hi link FluentdString             String
+hi link FluentdSymbol             Number
+hi link FluentdIp                 Number
+hi link FluentdDirectiveBegin     Function
+hi link FluentdDirectiveEnd       Identifier
+hi link FluentdEnvironment        Macro
