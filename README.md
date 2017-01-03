@@ -1,10 +1,13 @@
-# Fluentd sytax plugin for VIM
+# Fluentd sytax for vim
 
 ## example
 
-- v0.12 [https://github.com/fluent/fluentd/blob/master/example/v0_12_filter.conf](https://github.com/fluent/fluentd/blob/master/example/v0_12_filter.conf)
+### v0.12
+- source
 
 ```
+# https://github.com/fluent/fluentd/blob/master/example/v0_12_filter.conf
+
 # An example config to use filter plugins.
 # THIS FEATURE IS SUPPORTED FOR v0.12 AND ABOVE.
 
@@ -48,5 +51,6 @@
   </record>
 </filter>
 ```
+- syntax highlighting
 
-<img src="https://raw.githubusercontent.com/wiki/itkq/fluentd-vim/images/ex-v0-12.png" width="100%" />
+<img src="https://raw.githubusercontent.com/wiki/itkq/fluentd-vim/images/ex-v0-12.png" width="60%" />
