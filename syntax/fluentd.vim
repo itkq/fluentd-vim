@@ -28,7 +28,8 @@ syn match FluentdNumber +\s\d\+[\s\n]+
 syn match FluentdDecimal +\s\d\+\.\d\++
 syn match FluentdIp +\s\+\d\{1,3}\(\.\d\{1,3}\)\{3}\(:\d\{1,5}\|/\d\{1,2}\)\?+
 
-syn match FluentdEnvironment +\${.*}+
+syn match FluentdEnvironment +[#\$]{.*}+
+syn match FluentdRubyEnvironment +<%=.*%>+
 
 hi link FluentdDirectiveKeyword   Label
 hi link FluentdDelimiterBegin     Function
@@ -44,3 +45,4 @@ hi link FluentdIp                 Number
 hi link FluentdDirectiveBegin     Function
 hi link FluentdDirectiveEnd       Identifier
 hi link FluentdEnvironment        Macro
+hi link FluentdRubyEnvironment    Macro
