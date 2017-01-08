@@ -24,7 +24,8 @@ syn region FluentdPluginEnd matchgroup=fluentdDelimiterEnd start=+</+ end=+>$+ c
 syn match FluentdTag +^\s\+@\S*+
 syn match FluentdUserTag +@[^>]*+
 
-syn match FluentdSymbol +\s\d\++
+syn match FluentdNumber +\s\d\+[\s\n]+
+syn match FluentdDecimal +\s\d\+\.\d\++
 syn match FluentdIp +\s\+\d\{1,3}\(\.\d\{1,3}\)\{3}\(:\d\{1,5}\|/\d\{1,2}\)\?+
 
 syn match FluentdEnvironment +\${.*}+
@@ -37,7 +38,8 @@ hi link FluentdComment            Comment
 hi link FluentdTag                Identifier
 hi link FluentdUserTag            Function
 hi link FluentdString             String
-hi link FluentdSymbol             Number
+hi link FluentdNumber             Number
+hi link FluentdDecimal            Number
 hi link FluentdIp                 Number
 hi link FluentdDirectiveBegin     Function
 hi link FluentdDirectiveEnd       Identifier
