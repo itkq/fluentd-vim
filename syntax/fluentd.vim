@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: Fluentd
-" Maintainer: Takuya Kosugigyama
+" Maintainer: Takuya Kosugiyama
 " Latest Revision: December 2016
 
 if exists("b:current_syntax")
